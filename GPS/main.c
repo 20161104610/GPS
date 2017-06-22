@@ -8,40 +8,28 @@
 
 #include <stdio.h>
 
-int main(int argc, const char * argv[]) {
+int main()
+{
+    int i,j;
+    int b[10][10];
+    char a[100][100];
     
     FILE *fr;
-    FILE *fw;
-    
-    char ch[63];
-    int a[60];
-    int i;
     
     fr=fopen("/Users/a201611046101/Desktop/GPS/GPS170510.log","r+");
-    fw=fopen("/Users/a20161104610/Desktop/GPS/gps.txt","w");
-    
-    for(i=0;i<63;i++)
+
+    for(i=1;i<3;i++)
     {
-        fscanf("%c",&ch[i]);
-        if(i>=7&&i<=12)
+        fgets(a[i],62,fr);
+        printf("%s",a[i]);
+        for(j=8;j<=13;j++)
         {
-            fscanf("%d",&a[i]);
-        }
-        else
-        {
-            break;
+            //fscanf(fr,"%d",b[j]);
+            printf("%d",b[i][j]);
         }
     }
-    
-    for(i=0;i<63;i++)
-    {
-        //fprintf(fw,"%d ",a[i]);
-        printf("%d ",a[i]);
-    }
+
     printf("\n");
     
     fclose(fr);
-    fclose(fw);
-    
-    return 0;
 }
